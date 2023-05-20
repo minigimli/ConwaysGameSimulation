@@ -17,13 +17,12 @@
 #define ROUNDS 100
 
 void findNachbarn(int x, int y, int spielfeld[][YMAX], int nachbarn[][BOXSIZE]);
-void initSpielfeld(int spielfeld [][YMAX]);
 void printSpielfeld(int spielfeld [][YMAX]);
 int zaehlLebende(int nachbarn[][BOXSIZE]);
 void pruefeRegeln(int x, int y,  int lebende, int temp[][YMAX], int spielfeld[][YMAX]);
 
 //static const char array[XMAX][YMAX] 
-const static int array[XMAX][YMAX]= {
+static int spielfeld[XMAX][YMAX]= {
 {0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0},
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0},
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -86,7 +85,6 @@ int main(void)
 	unsigned int round = 0;
 
   t = clock ();
-	initSpielfeld(spielfeld);
   clrscr();
 	background = bgcolor(COLOR_BLACK);
 	text = textcolor(COLOR_WHITE);
@@ -252,18 +250,6 @@ void printSpielfeld(int spielfeld [][YMAX]){
 				revers(0);
 			}		
  			cputcxy (x, y, 32);
-		}
-	}
-}
-
-
-
-void initSpielfeld(int spielfeld [][YMAX]){
-	long int x,y;
-	//fülle das feld mit zufallswerten und gibs aus
-	for(y = 0; y< YMAX; y++){
-		for(x = 0; x< XMAX; x++){
-				spielfeld[x][y] = array[x][y];
 		}
 	}
 }
