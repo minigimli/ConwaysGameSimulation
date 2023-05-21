@@ -19,7 +19,7 @@
 void findNachbarn(int x, int y, int spielfeld[][YMAX], int nachbarn[][BOXSIZE]);
 void printSpielfeld(int spielfeld [][YMAX]);
 int zaehlLebende(int nachbarn[][BOXSIZE]);
-void pruefeRegeln(int x, int y,  int lebende, int temp[][YMAX], int spielfeld[][YMAX]);
+void pruefeRegeln(int x, int y,  int lebende, int temp[][YMAX]);
 
 //static const char array[XMAX][YMAX] 
 static int spielfeld[XMAX][YMAX]= {
@@ -101,7 +101,7 @@ int main(void)
 				lebende = zaehlLebende(nachbarn);
 				gotoxy(x,y);
 				cprintf("%d",lebende /7 );
-				pruefeRegeln(x,y,lebende / 7, temp, spielfeld);
+				pruefeRegeln(x,y,lebende / 7, temp);
 			}// for x
 		}// for y
 
@@ -140,37 +140,18 @@ int main(void)
 
 
 
-void pruefeRegeln(int x, int y,  int lebende, int temp[][YMAX], int spielfeld[][YMAX]){
-	//hier kommen meine regeln
-	if(spielfeld[x][y] == 0 ){
-		if(lebende == 3){
-			temp[x][y] = 1;
-//			printf("t3\n\n");
-		}
-	}
-	if(spielfeld[x][y] == 1){
-		if(lebende == 2){
-			temp[x][y] = 1;
-//			printf("=2\n\n");
-		}
-	}
-	if(spielfeld[x][y] == 1){
-		if(lebende == 3){
-			temp[x][y] = 1;
-//			printf("=3\n\n");
-		}
-	}
-	if(spielfeld[x][y] == 1){
-		if(lebende < 2){
-			temp[x][y] = 0;
-//			printf("<2\n\n");
-		}
-	}
-	if(spielfeld[x][y] == 1){
-		if(lebende > 3){					
-			temp[x][y] = 0;
-//			printf(">3\n\n");
-		}
+void pruefeRegeln(int x, int y,  int lebende, int temp[][YMAX]){
+		
+	switch (lebende){
+
+	case 2: //
+	
+	break;
+
+	case 3: temp[x][y] = 1; 
+	break;
+
+	default: temp[x][y] = 0;
 	}
 }
 
