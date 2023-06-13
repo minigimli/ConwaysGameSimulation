@@ -64,7 +64,6 @@ static int spielfeld[XMAX][YMAX]= {
 
 static int spielfeld[XMAX][YMAX];
 static int temp[XMAX][YMAX];
-static int nachbarn[BOXSIZE][BOXSIZE];
 
 int main(void)
 {
@@ -76,16 +75,26 @@ int main(void)
   unsigned char background;
   unsigned char text;
         
-	int x;
-	int y;
-	int lebende;
-	unsigned int round = 0;
+	register unsigned char x;
+	register unsigned char y;
+	register unsigned char lebende;
+	register unsigned char round = 0;
 
   t = clock ();
   clrscr();
 	background = bgcolor(COLOR_BLACK);
 	text = textcolor(COLOR_WHITE);
-	printSpielfeld(spielfeld);
+
+	for(y = 0; y< YMAX; y++){
+		for(x = 0; x< XMAX; x++){
+			if(spielfeld[x][y] == 1){
+				revers(1);
+			} else{
+				revers(0);
+			}		
+ 			cputcxy (x, y, 32);
+		}
+	}
 //	signal (int sig, __sigfunc func);
 
 
@@ -93,7 +102,7 @@ int main(void)
 		for(y = 0; y< YMAX; y++){
 			for(x = 0; x< XMAX; x++){
 				
-			register signed char xl = x-1;
+				register signed char xl = x-1;
 				register unsigned char xr = x+1;
 				register signed char yu = y-1;
 				register unsigned char yd = y +1;
@@ -139,7 +148,17 @@ int main(void)
 		memcpy(spielfeld,temp,XMAX*YMAX*2);
 	
 		round++;
-		printSpielfeld(spielfeld);	
+
+		for(y = 0; y< YMAX; y++){
+		for(x = 0; x< XMAX; x++){
+			if(spielfeld[x][y] == 1){
+				revers(1);
+			} else{
+				revers(0);
+			}		
+ 			cputcxy (x, y, 32);
+		}
+	}	
 	}
 		t = clock() - t;
 	
@@ -167,18 +186,4 @@ int main(void)
 
     /* Done */
     return EXIT_SUCCESS;
-}
-
-void printSpielfeld(int spielfeld [][YMAX]){
-	long int x,y;
-	for(y = 0; y< YMAX; y++){
-		for(x = 0; x< XMAX; x++){
-			if(spielfeld[x][y] == 1){
-				revers(1);
-			} else{
-				revers(0);
-			}		
- 			cputcxy (x, y, 32);
-		}
-	}
 }
