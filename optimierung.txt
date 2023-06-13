@@ -1,0 +1,27 @@
+ifs in prueferegeln zusammengefasst
+lebende *7 und / 7 entfernt
+zähllebende variable flag entfernt
+long int temp in findNachbarn entfernt
+printSpielfeld x,y Deklaration auf char geändert
+findNachbarn deklarations datentypen in char geändert
+main die x,y,lebende deklartion datentypen in char geändert
+initSpielfeld x,y in char ändern
+findnachbarn abfrage vor die zweite for - schleife
+-------------------------------------------------------------------------------------------------
+
+Überlegungen: 	Schauen was kann die Hardware von C64
+		Keine Multiplikationen und Divisionen möglich -> langsam
+		Schleifen sind seeeehr langsam
+		Funktionsaufrufe brauchen vieeeeel Zeit
+
+Optimierungsmöglichkeiten:
+
+	--Einzige Anforderung: Genaration -> Generation muss sichtbar sein
+	FindNachbar und Zahllebende kann neu geschrieben werden
+	--Initspielfeld kann vernachlässigt werden -> Array gleich ausgeben
+	--PruefeRegeln kann in ein switch case umgewandelt werden
+	Funktionsaufrufe generell werden vermieden
+	Schleifen sollen möglichst nich genutzt werden
+	!! Cheat !! Beim Kompilieren -Oirs als Command verwenden -> Compiler nimmt Optimierungen vor
+		
+		
