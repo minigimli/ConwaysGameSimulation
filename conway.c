@@ -16,10 +16,7 @@
 #define BOXSIZE 3
 #define ROUNDS 100
 
-void findNachbarn(int x, int y, int spielfeld[][YMAX], int nachbarn[][BOXSIZE]);
 void printSpielfeld(int spielfeld [][YMAX]);
-int zaehlLebende(int nachbarn[][BOXSIZE]);
-void pruefeRegeln(int x, int y,  int lebende, int temp[][YMAX]);
 
 //static const char array[XMAX][YMAX] 
 static int spielfeld[XMAX][YMAX]= {
@@ -95,13 +92,47 @@ int main(void)
 	while(round < ROUNDS && !kbhit()){
 		for(y = 0; y< YMAX; y++){
 			for(x = 0; x< XMAX; x++){
-				//gotoxy(0,0);
-				//cprintf("%2d %2d",x , y);
-				findNachbarn(x,y,spielfeld,nachbarn);
-				lebende = zaehlLebende(nachbarn);
-				gotoxy(x,y);
-				//cprintf("%d",lebende /7 );
-				pruefeRegeln(x,y,lebende / 7, temp);
+				
+			register signed char xl = x-1;
+				register unsigned char xr = x+1;
+				register signed char yu = y-1;
+				register unsigned char yd = y +1;
+
+				if(x == 0){
+					xl = XMAX - 1;
+				}
+				else if(x == XMAX - 1){
+					xr = 0;
+				}
+				if(y == 0){
+					yu = YMAX + 1;
+				}
+				else if( y == YMAX -1){
+					yd = 0;
+				}
+
+				lebende = 0;
+				lebende += spielfeld[xl][yu];
+				lebende += spielfeld[x][yu];
+				lebende += spielfeld[xr][yu];
+				lebende += spielfeld[xl][y];
+				lebende += spielfeld[xr][y];
+				lebende += spielfeld[xl][yd];
+				lebende += spielfeld[x][yd];
+				lebende += spielfeld[xr][yd];
+
+				switch (lebende){
+
+				case 2: temp[x][y] = spielfeld[x][y];
+	
+				break;
+
+				case 3: temp[x][y] = 1; 
+				break;
+
+				default: temp[x][y] = 0;
+				}
+
 			}// for x
 		}// for y
 
@@ -137,89 +168,6 @@ int main(void)
     /* Done */
     return EXIT_SUCCESS;
 }
-
-
-
-void pruefeRegeln(int x, int y,  int lebende, int temp[][YMAX]){
-		
-	switch (lebende){
-
-	case 2: //
-	
-	break;
-
-	case 3: temp[x][y] = 1; 
-	break;
-
-	default: temp[x][y] = 0;
-	}
-}
-
-
-int zaehlLebende(int nachbarn[][BOXSIZE]){
-  int lebende = 0;
-  int iy, ix, flag;
-	for(iy= 0; iy < BOXSIZE ; iy++){
-		for(ix = 0; ix < BOXSIZE; ix++){
-			//prüfe dass wir nicht auf unserer eigneen position sind
-			
-		  flag = 3 * 7 ;
-			
-			if(ix != 1){
-			flag += 1 * 7;
-			}
-			if(iy != 1 * 7){
-			flag +=2;
-			}
-			if(flag >3 * 7){
-				lebende += nachbarn[ix][iy] * 7;
-			}
-		}//for ix
-	}//for iy	
-	return lebende;
-}
-
-
-
-void findNachbarn(int x, int y, int spielfeld[][YMAX], int nachbarn[][BOXSIZE]){
-	//gehe über alle nachbarn
-	unsigned int osx, ix;
-	unsigned int osy, iy; 
-	signed int ofy;
-	signed int ofx;
-	long int temp;
-	
-	for(ofy = y-1, iy=0; ofy <= (signed int)y+1; ++ofy , ++iy){
-		for(ofx = x-1,ix = 0; ofx <= (signed int)x+1; ++ofx , ++ix){
-	
-			if( ofy < 0)	{
-				osy = YMAX-1;
-			}
-			else if( ofy > YMAX-1)	{
-					osy = 0;
-				}
-				else {
-					osy = ofy;
-				}
-			
-			
-			if( ofx < 0)	{
-				osx = XMAX-1;
-			} else if( ofx > XMAX-1)	{
-					osx = 0;
-				}
-				else {
-					osx = ofx;
-				}
-		  temp = spielfeld[osx][osy];
-			nachbarn[ix][iy] = temp;				
-		}//for ofx
-	}//for ofy	
-
-}
-
-
-
 
 void printSpielfeld(int spielfeld [][YMAX]){
 	long int x,y;
