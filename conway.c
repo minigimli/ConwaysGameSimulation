@@ -13,13 +13,10 @@
 //HighRes Mode 300x200px
 #define XMAX 40
 #define YMAX 25
-#define BOXSIZE 3
 #define ROUNDS 100
 
-void printSpielfeld(int spielfeld [][YMAX]);
-
 //static const char array[XMAX][YMAX] 
-static int spielfeld[XMAX][YMAX]= {
+static char spielfeld[XMAX][YMAX]= {
 {0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0},
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0},
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -62,8 +59,8 @@ static int spielfeld[XMAX][YMAX]= {
 {0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0},
 };
 
-static int spielfeld[XMAX][YMAX];
-static int temp[XMAX][YMAX];
+static char spielfeld[XMAX][YMAX];
+static char temp[XMAX][YMAX];
 
 int main(void)
 {
@@ -75,10 +72,8 @@ int main(void)
   unsigned char background;
   unsigned char text;
         
-	register unsigned char x;
-	register unsigned char y;
-	register unsigned char lebende;
-	register unsigned char round = 0;
+	register unsigned char x, y, lebende, round, xl, xr, yu, yd;
+	round = 0;
 
   t = clock ();
   clrscr();
@@ -102,10 +97,10 @@ int main(void)
 		for(y = 0; y< YMAX; y++){
 			for(x = 0; x< XMAX; x++){
 				
-				register signed char xl = x-1;
-				register unsigned char xr = x+1;
-				register signed char yu = y-1;
-				register unsigned char yd = y +1;
+				xl = x-1;
+				xr = x+1;
+				yu = y-1;
+				yd = y +1;
 
 				if(x == 0){
 					xl = XMAX - 1;
@@ -145,7 +140,7 @@ int main(void)
 			}// for x
 		}// for y
 
-		memcpy(spielfeld,temp,XMAX*YMAX*2);
+		memcpy(spielfeld,temp,XMAX*YMAX);
 	
 		round++;
 
