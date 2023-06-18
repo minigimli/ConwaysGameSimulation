@@ -36,17 +36,9 @@ Optimierungen:
 
 Fortschritt:
 
-Anfangsprogramm	                                                        56,3s
-Anfangsprogramm mit Kopileroptimierung	                                42s
-initSpielefeld gelöscht	                                                40,4s
-pruefeRegeln überarbeitet	                                              38,5s
-X,Y Anzeige links oben entfernt	                                        24s
-Zähllebende und FindNachbar zusammengefasst, Funktionsaufrufe entfernen	7,2s
-Datentypen optimert, Funktionsaufruf pruefeRegeln entfernt	            5,3s
-Datentypen optimiert, spielfeld auf char geändert	                      4,7s
-
-![image](https://github.com/minigimli/ConwaysGameSimulation/assets/128684904/d95bf787-be9b-4fd2-aefb-c55f7387c58a)
+![image](https://github.com/minigimli/ConwaysGameSimulation/assets/128684904/7221ae39-0d9e-4c2b-a2dd-c0bb8ca94362)
 
 
 ![image](https://github.com/minigimli/ConwaysGameSimulation/assets/128684904/7da33038-ba0d-4ebe-a495-03a840458baf)
 
+Dies ist der Inhalt der Excel Datei "Time_History".
