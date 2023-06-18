@@ -22,15 +22,17 @@ All diese Bedingungen passieren in einem Zug, d.h. zum Beispiel, dass wenn eine 
 
 Optimierungen:
 
-1: Den Funktionsaufruf initSpielfeld löschen und das Spielfeld direkt oben beim Array auf spielfeld setzen, denn es ist unnötig das man es erst später mit einem Funktionsaufruf macht.
+1: Den Funktionsaufruf initSpielfeld löschen und das Spielfeld direkt oben beim Array auf spielfeld setzen, denn es ist unnötig und zeitverschwenderisch das man es erst später mit einem Funktionsaufruf macht.
 
-2: Alle ints auf char umändern weil wir es nur mit einzelnen Zeichen (character) zu tun haben.
+2: Alle ints auf char umändern weil wir es nur mit einzelnen Zeichen (character) zu tun haben. Daher ints überflüssig!
 
-3: Funktion Prueferegeln überarbeiten, anstatt vielen ifs eine Switch verwenden weil dies weniger Aufwand braucht.
+3: Funktion Prueferegeln überarbeiten, anstatt vielen ifs eine Switch verwenden weil dies weniger Aufwand braucht und für diesen Fall passt, da wir überprüfen wie viele Nachbaren leben.
 
-4: Funktion zaehllebende ändern, eine For-Schleife verbraucht wehr viel Zeit. Dies liegt daran, dass es nach jedem durchlauf die Variable überprüft und inkrementiert/dekrementiert. Und bei Zwei Fors kann man sehr viel Zeit verschwenden. Einfacher gehts, indem man einfach die Nachbarn addiert. Dieser Funktionsteil wird danach in die Funktion findnachbar geaddet. Allgemein werden alle Funktionenauurufe gelöscht und alle Funktionen werden im main ausgeführt. Dass ist nicht ideal, aber effizient für das Programm. Ein wichtiger Punkt ist auch, dass im IF in der For-Schleife und beim flag multipliziert wird. Das Programm multipliziert jedoch nicht sondern addiert alles einzeln. Dies verbraucht auch unnötig sehr viel Zeit.
+4: Die X,Y anzeige löschen da dies sehr unnötig Zeit frisst, außerdem ist diese Anzeige im origninalem Spiel nicht existent.
 
-5: Funktion findNachbar optimieren, hier werden die For-Schleifen optimiert, die gekürzte zaehllebende Funktion und die Pruefregel Funktion beigefügt. Hier verwenden wir Hilfsvariablen für die Position der Nachbaren, die wir in Ifs. Als Beispiel fragen wir mit der IF ob das x lebendig ist, falls, dass der falls ist wird das xr (right) auf 0 gesetzt. Somit können wir alle acht Nachbaren überprüfen, ob sie lebendig sind oder nicht.
+5: Funktion zaehllebende ändern, eine For-Schleife verbraucht wehr viel Zeit. Dies liegt daran, dass es nach jedem durchlauf die Variable überprüft und inkrementiert/dekrementiert. Und bei Zwei Fors kann man sehr viel Zeit verschwenden. Einfacher gehts, indem man einfach die Nachbarn addiert. Dieser Funktionsteil wird danach in die Funktion findnachbar geaddet. Allgemein werden alle Funktionenauurufe gelöscht und alle Funktionen werden im main ausgeführt. Dass ist nicht ideal, aber effizient für das Programm. Ein wichtiger Punkt ist auch, dass im IF in der For-Schleife und beim flag multipliziert wird. Das Programm multipliziert jedoch nicht sondern addiert alles einzeln. Dies verbraucht auch unnötig sehr viel Zeit, deswegen Multiplikationen vermeiden!!
+
+6: Funktion findNachbar optimieren, hier werden die For-Schleifen optimiert, die gekürzte zaehllebende Funktion und die Pruefregel Funktion beigefügt. Hier verwenden wir Hilfsvariablen für die Position der Nachbaren, die wir in Ifs. Als Beispiel fragen wir mit der IF ob das x lebendig ist, falls, dass der falls ist wird das xr (right) auf 0 gesetzt. Somit können wir alle acht Nachbaren überprüfen, ob sie lebendig sind oder nicht.
 
 
 
