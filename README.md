@@ -20,4 +20,13 @@ Wenn eine lebendige Zelle mehr als 3 Nachbaren hat, stirbt dieser auch
 All diese Bedingungen passieren in einem Zug, d.h. zum Beispiel, dass wenn eine lebendige Zelle 4 Nachbaren hat und eines seiner Nachbaren nur einen Nachbar, so werden beide Sterben
 
 
+Optimierungen:
+
+1: Den Funktionsaufruf initSpielfeld löschen und das Spielfeld direkt oben beim Array auf spielfeld setzen, denn es ist unnötig das man es erst später mit einem Funktionsaufruf macht.
+
+2: Alle ints auf char umändern weil wir es nur mit einzelnen Zeichen (character) zu tun haben.
+
+3: 
+
+
 
