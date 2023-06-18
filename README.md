@@ -34,5 +34,19 @@ Optimierungen:
 
 6: Funktion findNachbar optimieren, hier werden die For-Schleifen optimiert, die gekürzte zaehllebende Funktion und die Pruefregel Funktion beigefügt. Hier verwenden wir Hilfsvariablen für die Position der Nachbaren, die wir in Ifs. Als Beispiel fragen wir mit der IF ob das x lebendig ist, falls, dass der falls ist wird das xr (right) auf 0 gesetzt. Somit können wir alle acht Nachbaren überprüfen, ob sie lebendig sind oder nicht.
 
+Fortschritt:
 
+Anfangsprogramm	                                                        56,3s
+Anfangsprogramm mit Kopileroptimierung	                                42s
+initSpielefeld gelöscht	                                                40,4s
+pruefeRegeln überarbeitet	                                              38,5s
+X,Y Anzeige links oben entfernt	                                        24s
+Zähllebende und FindNachbar zusammengefasst, Funktionsaufrufe entfernen	7,2s
+Datentypen optimert, Funktionsaufruf pruefeRegeln entfernt	            5,3s
+Datentypen optimiert, spielfeld auf char geändert	                      4,7s
+
+![image](https://github.com/minigimli/ConwaysGameSimulation/assets/128684904/d95bf787-be9b-4fd2-aefb-c55f7387c58a)
+
+
+![image](https://github.com/minigimli/ConwaysGameSimulation/assets/128684904/7da33038-ba0d-4ebe-a495-03a840458baf)
 
